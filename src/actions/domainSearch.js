@@ -17,13 +17,11 @@ export const domainSearchError = error => ({
 
 export const domainSearch = domain => dispatch => {
 	dispatch(domainSearchRequest);
-	fetch(`https://api.ote-godaddy.com/v1/domains/available?domain=${domain}&checkType=FULL&forTransfer=false`, {
+	return fetch(`https://api.ote-godaddy.com/v1/domains/available?domain=${domain}&checkType=FULL&forTransfer=false`, {
 		method: 'GET',
 		headers: {
-			'Accept': 'application/json',
-			'Authorization': 'sso-key 3mM44UYhVC4J3w_TkTtwSEqWbdt1koSVZPB7S:TkTvzYV3JoQ4U8YzdeBuf2'
-		},
-		mode: 'no-cors'
+			Authorization: 'sso-key 3mM44UYhVC4J3w_TkTtwSEqWbdt1koSVZPB7S:TkTvzYV3JoQ4U8YzdeBuf2'
+		}	
 	})
 		.then(res => 
 			res.json())
@@ -31,4 +29,4 @@ export const domainSearch = domain => dispatch => {
 			dispatch(domainSearchSuccess(domain)))
 		.catch(err => 
 			dispatch(domainSearchError(err)));
-};
+}
