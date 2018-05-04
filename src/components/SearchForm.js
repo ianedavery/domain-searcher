@@ -1,32 +1,45 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {domainSearch} from '../actions/domainSearch';
+import Results from './Results';
 
 class SearchForm extends Component {
 
-	componentDidMount(domain) {
-		this.props.dispatch(domainSearch('hellonast.com'));
+	constructor(props) {
+		super(props);
+		this.state = {
+			searchClicked: false
+		}
 	}
-  	render() {
-  		
-  		if(this.props.available === false) {
-  			return (
-  				<div>{this.props.domain} is not available</div>
-  			);
-  		}
 
-	    return (
-	      <div>
-	        {this.props.domain} is available
-	      </div>
-	    );
-  	}
+	handleSearch(searchClicked) {
+		this.setState({
+			searchClicked
+		});
+		this.props.dispatch(domainSearch(this.input.value));
+	}
+
+	handleNewSearch(searchClicked) {
+		this.setState({
+			searchClicked
+		});
+	}
+
+  	render() {
+
+  		if(this.state.searchClicked) {
+  			return (
+				<Results newSearch={this.handleNewSearch.bind(this)} />
+			)
+  		}
+ 		 		
+  		return (
+	  		<form onSubmit={this.handleSearch}>
+	  			<input type='text' ref={(input) => this.input = input}/>
+	  			<button type='button' onClick={this.handleSearch.bind(this)}>Search</button>
+			</form>
+		)
+	}
 }
 
-const mapStateToProps = state => {
-	return {
-		domain: state.domain.domain.domain
-	};
-};
-
-export default connect(mapStateToProps)(SearchForm);
+export default connect(null)(SearchForm);

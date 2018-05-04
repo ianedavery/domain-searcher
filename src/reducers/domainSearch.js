@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export default function domainSearchReducer(state = initialState, action) {
-	console.log(action);
 	if(action.type === DOMAIN_SEARCH_REQUEST) {
 		return Object.assign({}, state, {
 			loading: true,
