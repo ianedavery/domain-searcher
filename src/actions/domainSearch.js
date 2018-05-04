@@ -17,11 +17,11 @@ export const domainSearchError = error => ({
 
 export const domainSearch = domain => dispatch => {
 	dispatch(domainSearchRequest);
-	return fetch(`https://api.ote-godaddy.com/v1/domains/available?domain=${domain}&checkType=FULL&forTransfer=false`, {
-		method: 'GET',
-		headers: {
-			Authorization: 'sso-key 3mM44UYhVC4J3w_TkTtwSEqWbdt1koSVZPB7S:TkTvzYV3JoQ4U8YzdeBuf2'
-		}	
+	return fetch("https://damp-waters-36634.herokuapp.com/https://api.ote-godaddy.com/v1/domains/available?domain=fartqueens.com&checkType=FULL&forTransfer=false", {
+  		headers: {
+    		'accept': "application/json",
+    		'Authorization': "sso-key 3mM44UYhVC4J3w_TkTtwSEqWbdt1koSVZPB7S:TkTvzYV3JoQ4U8YzdeBuf2"
+		}
 	})
 		.then(res => 
 			res.json())
