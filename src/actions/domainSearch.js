@@ -1,3 +1,5 @@
+import {API_BASE_URL} from '../config';
+
 export const DOMAIN_SEARCH_REQUEST = 'DOMAIN_SEARCH_REQUEST';
 export const domainSearchRequest = () => ({
 	type: DOMAIN_SEARCH_REQUEST
@@ -17,12 +19,7 @@ export const domainSearchError = error => ({
 
 export const domainSearch = domain => dispatch => {
 	dispatch(domainSearchRequest);
-	return fetch("https://damp-waters-36634.herokuapp.com/https://api.ote-godaddy.com/v1/domains/available?domain=fartqueens.com&checkType=FULL&forTransfer=false", {
-  		headers: {
-    		'accept': "application/json",
-    		'Authorization': "sso-key 3mM44UYhVC4J3w_TkTtwSEqWbdt1koSVZPB7S:TkTvzYV3JoQ4U8YzdeBuf2"
-		}
-	})
+	return fetch(`${API_BASE_URL}${domain}`)
 		.then(res => 
 			res.json())
 		.then(domain => 
