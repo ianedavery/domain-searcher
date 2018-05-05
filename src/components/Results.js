@@ -5,20 +5,22 @@ class Results extends Component {
 
   	render() {
 
+  		let searchAgain = <button type='button' onClick={() => this.props.newSearch()}>Search Again</button>;
+
   		if(this.props.domain.domain.available === false) {
   			return (
   				<div>
   					<div>{this.props.domain.domain.domain} is not available</div>
-  					<button type='button' onClick={() => this.props.newSearch()}>Search Again</button>
+  					{searchAgain}
 				</div>
   			);
   		}
 
-	    if(this.props.domain.available)
+	    if(this.props.domain.domain.available)
 	    	return (
 		      <div>
 		        <div>{this.props.domain.domain.domain} is available</div>
-				<button type='button' onClick={() => this.props.newSearch()}>Search Again</button>
+				{searchAgain}
 		      </div>
 		    );
 
@@ -26,7 +28,7 @@ class Results extends Component {
 	    	return (
 		      	<div>
 		        	<div>The domain you've entered does not meet the correct syntax criteria. Please search again.</div>
-					<button type='button' onClick={() => this.props.newSearch()}>Search Again</button>
+					{searchAgain}
 		      	</div>	
     		)
 	    }
@@ -35,7 +37,7 @@ class Results extends Component {
 	    	return (
 		      	<div>
 		        	<div>The top level domain you choosen in not supported. Please search again.</div>
-					<button type='button' onClick={() => this.props.newSearch()}>Search Again</button>
+					{searchAgain}
 		      	</div>	
     		)
 	    }
@@ -44,7 +46,7 @@ class Results extends Component {
 	    	return (
 		      	<div>
 		        	<div>The domain you've entered contains invalid characters. Please search again.</div>
-					<button type='button' onClick={() => this.props.newSearch()}>Search Again</button>
+					{searchAgain}
 		      	</div>	
     		)
 	    }
