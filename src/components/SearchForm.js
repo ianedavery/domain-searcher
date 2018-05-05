@@ -12,16 +12,20 @@ class SearchForm extends Component {
 		}
 	}
 
-	handleSearch(searchClicked) {
+	handleView(searchClicked) {
 		this.setState({
-			searchClicked
+			searchClicked: true
 		});
+	}
+
+	handleSearch() {
 		this.props.dispatch(domainSearch(this.input.value));
+		this.handleView();
 	}
 
 	handleNewSearch(searchClicked) {
 		this.setState({
-			searchClicked
+			searchClicked: false
 		});
 	}
 
@@ -34,10 +38,11 @@ class SearchForm extends Component {
   		}
  		 		
   		return (
-	  		<form onSubmit={this.handleSearch}>
+	  		<div>
+	  			<label aria-label='search' />
 	  			<input type='text' ref={(input) => this.input = input}/>
 	  			<button type='button' onClick={this.handleSearch.bind(this)}>Search</button>
-			</form>
+			</div>
 		)
 	}
 }

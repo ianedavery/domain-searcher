@@ -16,14 +16,13 @@ export default function domainSearchReducer(state = initialState, action) {
 	if(action.type === 	DOMAIN_SEARCH_SUCCESS) {
 		return Object.assign({}, state, {
 			loading: false,
-			domain: action.domain,
-			error: null
+			domain: action.domain
 		});
 	}
 	if(action.type === DOMAIN_SEARCH_ERROR) {
 		return Object.assign({}, state, {
 			error: action.error,
-			loading: false,
+			loading: false
 		});
 	}
 	return state;
