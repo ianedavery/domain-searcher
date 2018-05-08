@@ -5,45 +5,26 @@ import Results from './Results';
 
 class SearchForm extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			searchClicked: false
-		}
-	}
-
-	handleView(searchClicked) {
-		this.setState({
-			searchClicked: true
-		});
-	}
-
-	handleSearch() {
+	handleSearch(e) {
+		e.preventDefault();
 		this.props.dispatch(domainSearch(this.input.value));
-		this.handleView();
-	}
-
-	handleNewSearch(searchClicked) {
-		this.setState({
-			searchClicked: false
-		});
+		this.input.value='';
 	}
 
   	render() {
-
-  		if(this.state.searchClicked) {
-  			return (
-				<Results newSearch={this.handleNewSearch.bind(this)} />
-			)
-  		}
  		 		
   		return (
-	  		<div>
-	  			<label aria-label='search' />
-	  			<input type='text' ref={(input) => this.input = input}/>
-	  			<button type='button' onClick={this.handleSearch.bind(this)}>Search</button>
+	  		<div className='domain_search'>
+	  			<header className='banner' role='banner'>Domain Search</header>
+	  			<Results className='results' />
+	  			<form onSubmit={this.handleSearch.bind(this)}>
+		  			<label aria-label='search' />
+		  			<input type='text' ref={(input) => this.input = input}/>
+		  			<button type='submit'>Search</button>
+	  			</form>
 			</div>
 		)
+
 	}
 }
 

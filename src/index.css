@@ -1,5 +1,38 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 20px 0 20px;
   font-family: sans-serif;
+}
+
+.domain_search {
+	text-align: center;
+}
+
+.banner,
+.results {
+	position: fixed;
+    left: 0;
+    right: 0; 
+}
+
+.banner {
+    top: 20px;
+    font-size: 30px; 
+}
+
+.results {
+    top: 130px; 
+}
+
+input,
+button {
+	display: block;
+}
+
+input {
+	margin: 200px auto 0 auto;
+}
+
+button {
+	margin: 10px auto;
 }
