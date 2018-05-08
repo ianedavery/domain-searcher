@@ -5,55 +5,36 @@ class Results extends Component {
 
   	render() {
 
-  		let searchAgain = <button type='button' onClick={() => this.props.newSearch()}>Search Again</button>;
+  		let results;
 
   		if(this.props.domain.domain.available === false) {
-  			return (
-  				<div>
-  					<div>{this.props.domain.domain.domain} is not available</div>
-  					{searchAgain}
-				</div>
-  			);
+  			results = 
+  					<div>{this.props.domain.domain.domain} is not available</div>;
   		}
 
-	    if(this.props.domain.domain.available)
-	    	return (
-		      <div>
-		        <div>{this.props.domain.domain.domain} is available</div>
-				{searchAgain}
-		      </div>
-		    );
-
-	    if(this.props.domain.domain.code === 'INVALID_BODY') {
-	    	return (
-		      	<div>
-		        	<div>The domain you've entered does not meet the correct syntax criteria. Please search again.</div>
-					{searchAgain}
-		      	</div>	
-    		)
+	    if(this.props.domain.domain.available) {
+	    	results = 
+		        	<div>{this.props.domain.domain.domain} is available</div>;
 	    }
 
+	    if(this.props.domain.domain.code === 'INVALID_BODY') {
+	    	results =
+		        	<div>The domain you've entered does not meet the correct syntax criteria.<br/>Please search again.</div>;
+    	}
+
 	    if(this.props.domain.domain.code === 'UNSUPPORTED_TLD') {
-	    	return (
-		      	<div>
-		        	<div>The top level domain you choosen in not supported. Please search again.</div>
-					{searchAgain}
-		      	</div>	
-    		)
+	    	results =
+		        	<div>The top level domain you choosen in not supported.<br/>Please search again.</div>;
 	    }
 
 	    if(this.props.domain.domain.code === 'INVALID_CHARACTERS') {
-	    	return (
-		      	<div>
-		        	<div>The domain you've entered contains invalid characters. Please search again.</div>
-					{searchAgain}
-		      	</div>	
-    		)
+	    	results = 
+		        	<div>The domain you've entered contains invalid characters.<br/>Please search again.</div>;
 	    }
 
 	    return (
-	    	<div>Loading...</div>
-    	);
+	    	<div className='results'>{results}</div>
+    	)
 
   	}
 }
