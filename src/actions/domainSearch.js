@@ -18,7 +18,7 @@ export const domainSearchError = error => ({
 });
 
 export const domainSearch = domain => dispatch => {
-	dispatch(domainSearchRequest);
+	dispatch(domainSearchRequest());
 	return fetch(`${API_BASE_URL}${domain}`)
 		.then(res => 
 			res.json())

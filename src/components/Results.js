@@ -33,7 +33,7 @@ class Results extends Component {
 	    }
 
 	    return (
-	    	<div className='results'>{results}</div>
+	    	<div className='results'>{this.props.domain.loading === true ? 'Loading...' : results}</div>
     	)
 
   	}
