@@ -24,7 +24,7 @@ class Results extends Component {
 
 	    if(this.props.domain.domain.code === 'UNSUPPORTED_TLD') {
 	    	results =
-		        	<div>The top level domain you choosen in not supported.<br/>Please search again.</div>;
+		        	<div>The top level domain you entered in not supported.<br/>Please search again.</div>;
 	    }
 
 	    if(this.props.domain.domain.code === 'INVALID_CHARACTERS') {
